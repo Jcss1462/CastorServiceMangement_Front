@@ -1,7 +1,8 @@
 export interface Employee {
-    id: number;
+    id?: number;
     cedula: number;
     nombre: string;
-    fechaIngreso: string;
+    fechaIngreso?: string;
     idCargo: string;
+    foto:string
 }

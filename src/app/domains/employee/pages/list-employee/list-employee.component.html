@@ -8,7 +8,7 @@
         <div class="mb-3">
             <!-- Contenedor para el botón fijo -->
             <div class="fixed-button">
-                <button class="btn btn-primary"><i class="bi bi-plus-circle"></i></button>
+                <button (click)="navigateToAddEmployee()" class="btn btn-primary"><i class="bi bi-plus-circle"></i></button>
             </div>
         </div>
 
@@ -33,7 +33,14 @@
                         <td>{{employee.id}}</td>
                         <td>{{employee.cedula}}</td>
                         <td>{{employee.nombre}}</td>
-                        <td><img src="https://via.placeholder.com/50" alt="Foto de Juan Pérez"></td>
+                        <td>
+
+                            @if(employee.foto==""){
+                                <img src="https://via.placeholder.com/50">
+                            }@else{
+                                <img [src]="employee.foto" alt="Foto de Juan Pérez">
+                            }
+                        </td>
                         <td>{{employee.fechaIngreso}}</td>
                         <td>{{employee.idCargo}}</td>
                         <td>

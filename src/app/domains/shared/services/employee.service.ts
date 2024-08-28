@@ -18,7 +18,11 @@ export class EmployeeService {
     const url=new URL(environment.castorApi+"/Empleado/GettAllEmpleados");
 
     let response: Observable<Employee[]> = this.http.get<Employee[]>(url.toString())
-    
+
     return response;
+  }
+
+  createEmployee(employee: Employee) {
+    return this.http.post<Employee>( environment.castorApi+"/Empleado/createEmpleado", employee);  
   }
 }
