@@ -1,2 +1,50 @@
-<p>list-employee works!</p>
-<button (click)="showToaster()">oprimir</button>
+<div id="container" class="row">
+
+    <div class="content">
+        <!-- Título de la página -->
+        <h1><b>Lista de empleados</b></h1>
+
+        <!-- Botón para añadir un nuevo empleado -->
+        <div class="mb-3">
+            <!-- Contenedor para el botón fijo -->
+            <div class="fixed-button">
+                <button class="btn btn-primary"><i class="bi bi-plus-circle"></i></button>
+            </div>
+        </div>
+
+        <!-- Contenedor de la tabla -->
+        <div class="table-container">
+            <table class="table table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Foto</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Cargo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (employee of employees(); track employee.id) {
+
+                    <tr>
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.cedula}}</td>
+                        <td>{{employee.nombre}}</td>
+                        <td><img src="https://via.placeholder.com/50" alt="Foto de Juan Pérez"></td>
+                        <td>{{employee.fechaIngreso}}</td>
+                        <td>{{employee.idCargo}}</td>
+                        <td>
+                            <!-- Botones de Acción -->
+                            <button class="btn btn-warning btn-sm me-2"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+#container {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+    /* Permite el scroll vertical */
+    padding-top: 10px;
+    /* Ajuste de espacio para el título */
+    margin: 0;
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.table-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    /* Máximo ancho */
+    margin: 0 auto;
+    /* Centrado horizontal */
+    overflow: auto;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    /* Ajusta según el espacio que desees desde el borde inferior */
+    right: 40px;
+    /* Ajusta según el espacio que desees desde el borde derecho */
+    z-index: 1000;
+    /* Asegura que el botón esté por encima de otros elementos */
+}
+
+.fixed-button button{
+    border-radius: 50px;
+    font-size: 2rem;
+}
