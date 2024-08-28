@@ -54,7 +54,19 @@ export class AddEmployeeComponent {
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
+
+      
+
       const file = input.files[0];
+      
+      // Validar tipo MIME
+      const validImageTypes = ['image/jpeg', 'image/png'];
+      if (!validImageTypes.includes(file.type)) {
+        this.toastr.error("Solo se permiten archivos de imagen (JPEG y PNG).");
+        this.clearImage();
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;

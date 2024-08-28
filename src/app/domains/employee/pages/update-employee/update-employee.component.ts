@@ -25,7 +25,7 @@ export class UpdateEmployeeComponent {
   private employeeService = inject(EmployeeService);
   private cargoService = inject(CargoService);
   private spinnerService = inject(SpinnerService);
-  imagePreview: string | ArrayBuffer | null | undefined= null;
+  imagePreview: string | ArrayBuffer | null | undefined = null;
 
   constructor(private toastr: ToastrService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.employeeForm = this.fb.group({
@@ -89,7 +89,18 @@ export class UpdateEmployeeComponent {
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
+
       const file = input.files[0];
+
+      // Validar tipo MIME
+      const validImageTypes = ['image/jpeg', 'image/png'];
+      if (!validImageTypes.includes(file.type)) {
+        this.toastr.error("Solo se permiten archivos de imagen (JPEG y PNG).");
+        this.imagePreview= this.employee()!.foto != "" ? this.employee()?.foto : "https://via.placeholder.com/200";
+        input.value="";
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
@@ -124,12 +135,13 @@ export class UpdateEmployeeComponent {
       let fotoBase64 = '';
       if (fileInput.files && fileInput.files[0]) {
         const file = fileInput.files[0];
+        console.log(file);
         fotoBase64 = await this.convertToBase64(file);
       }
 
       //guardo el dato
       let eployeeToUpdate: Employee = {
-        id:this.employeeForm.get("id")?.value,
+        id: this.employeeForm.get("id")?.value,
         cedula: this.employeeForm.get("cedula")?.value,
         nombre: this.employeeForm.get("nombre")?.value,
         idCargo: this.employeeForm.get("idCargo")?.value,
@@ -149,7 +161,7 @@ export class UpdateEmployeeComponent {
           }
         })
 
-    }else {
+    } else {
       this.toastr.error("Llena todos los campos obligatorios");
     }
   }
