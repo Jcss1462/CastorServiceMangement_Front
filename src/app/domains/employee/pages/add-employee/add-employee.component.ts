@@ -6,6 +6,7 @@ import { Cargo } from '../../../shared/models/cargo';
 import { CargoService } from '../../../shared/services/cargo.service';
 import { Employee } from '../../../shared/models/employee';
 import { EmployeeService } from '../../../shared/services/employee.service';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -21,6 +22,7 @@ export class AddEmployeeComponent {
 
   private cargoService = inject(CargoService);
   private employeeService = inject(EmployeeService);
+  private spinnerService = inject(SpinnerService);
 
   imagePreview: string | ArrayBuffer | null = null;
 
@@ -107,16 +109,18 @@ export class AddEmployeeComponent {
         foto: fotoBase64
       }
 
-
+      this.spinnerService.showSpinner.update(() => true);
       this.employeeService.createEmployee(newEmployee)
         .subscribe({
           next: (response) => {
             this.toastr.success("Empleado creado con exito");
             this.employeeForm.reset();
             this.clearImage();
+            this.spinnerService.showSpinner.update(() => false);
           },
           error: () => {
             this.toastr.error("Error al guardar empleado");
+            this.spinnerService.showSpinner.update(() => false);
           }
         })
 

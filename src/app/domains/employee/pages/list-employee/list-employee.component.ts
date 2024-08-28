@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Employee } from '../../../shared/models/employee';
 import { EmployeeService } from '../../../shared/services/employee.service';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../shared/services/spinner.service';
 
 @Component({
   selector: 'app-list-employee',
@@ -17,6 +18,7 @@ export class ListEmployeeComponent {
   employees = signal<Employee[]>([]);
 
   private  employeeService= inject(EmployeeService);
+  private spinnerService = inject(SpinnerService);
  
   constructor(private toastr: ToastrService,private router: Router){}
 
@@ -30,6 +32,7 @@ export class ListEmployeeComponent {
 
   
   private getAllEmployee() {
+    this.spinnerService.showSpinner.update(() => true);
     this.employeeService.getAllEmployeee()
     .subscribe({
       next: (employees) => {
@@ -42,9 +45,11 @@ export class ListEmployeeComponent {
         });
         
         this.employees.set(updatedImagesArray);
+        this.spinnerService.showSpinner.update(() => false);
       },
       error: () => {
         this.toastr.error("Error al intentar obtener los empleados");
+        this.spinnerService.showSpinner.update(() => false);
       }
     })
   }

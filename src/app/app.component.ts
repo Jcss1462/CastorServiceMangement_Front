@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SpinnerService } from './domains/shared/services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'CastorServiceMangement_Front';
+
+  private  spinnerService= inject(SpinnerService);
+  showSpinner=this.spinnerService.showSpinner;
 }
