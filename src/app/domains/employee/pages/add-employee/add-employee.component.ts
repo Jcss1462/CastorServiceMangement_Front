@@ -116,8 +116,9 @@ export class AddEmployeeComponent {
             this.clearImage();
             this.spinnerService.showSpinner.update(() => false);
           },
-          error: () => {
-            this.toastr.error("Error al guardar empleado");
+          error: (err) => {
+            console.log(err);
+            this.toastr.error("Error al guardar empleado: \n" +err.error.split("at")[0]);
             this.spinnerService.showSpinner.update(() => false);
           }
         })
