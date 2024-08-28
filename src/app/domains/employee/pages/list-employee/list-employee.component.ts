@@ -4,6 +4,7 @@ import { Employee } from '../../../shared/models/employee';
 import { EmployeeService } from '../../../shared/services/employee.service';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
+import { DomElementSchemaRegistry } from '@angular/compiler';
 
 @Component({
   selector: 'app-list-employee',
@@ -52,6 +53,24 @@ export class ListEmployeeComponent {
         this.spinnerService.showSpinner.update(() => false);
       }
     })
+  }
+
+  deleteEmployee(id?:number){
+
+    this.spinnerService.showSpinner.update(() => true);
+    this.employeeService.deleteEmployee(id)
+    .subscribe({
+      next: () => {
+        this.toastr.success("Empleado con id: "+ id+" eliminado con exito");
+        this.spinnerService.showSpinner.update(() => false);
+        this.getAllEmployee();
+      },
+      error: () => {
+        this.toastr.error("Error al intentar eliminar el empleado");
+        this.spinnerService.showSpinner.update(() => false);
+      }
+    })
+
   }
 
   navigateToAddEmployee() {

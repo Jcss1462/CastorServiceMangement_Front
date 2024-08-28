@@ -23,6 +23,12 @@ export class EmployeeService {
   }
 
   createEmployee(employee: Employee) {
-    return this.http.post<Employee>( environment.castorApi+"/Empleado/createEmpleado", employee);  
+    return this.http.post<void>( environment.castorApi+"/Empleado/createEmpleado", employee);  
   }
+
+  deleteEmployee(id?: number) {
+    return this.http.delete<void>( environment.castorApi+"/Empleado/"+id);  
+  }
+
+
 }
