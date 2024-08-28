@@ -78,4 +78,8 @@ export class ListEmployeeComponent {
   }
   
 
+  goToUpdateEmployee(id?: number) {
+    this.router.navigate(['/updateEmployee', id]);
+  }
+
 }

@@ -30,5 +30,11 @@ export class EmployeeService {
     return this.http.delete<void>( environment.castorApi+"/Empleado/"+id);  
   }
 
+  getEmployeeById(id? : number) {
+    const url=new URL(environment.castorApi+"/Empleado/GetEmpleadoById/"+id);
+    let response: Observable<Employee> = this.http.get<Employee>(url.toString())
+    return response;
+  }
+
 
 }

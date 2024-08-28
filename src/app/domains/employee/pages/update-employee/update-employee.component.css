@@ -1,0 +1,57 @@
+.fixed-back-button {
+    position: fixed;
+    top: 20px; /* Ajusta según el espacio que desees desde el borde superior */
+    left: 20px; /* Ajusta según el espacio que desees desde el borde izquierdo */
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+}
+
+.container {
+    max-width: 800px; /* Ajusta el ancho máximo del contenedor según sea necesario */
+}
+
+h1 {
+    font-size: 2rem; /* Tamaño de fuente del título */
+    font-weight: bold; /* Negrita para el título */
+}
+
+.form-control,
+.form-select {
+    border-radius: 0.5rem; /* Bordes más redondeados para un aspecto más moderno */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra interna sutil */
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem; /* Ajusta el relleno del botón */
+    border-radius: 0.5rem; /* Bordes redondeados para el botón */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra externa sutil para el botón */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra externa sutil para el formulario */
+}
+
+.bg-white {
+    background-color: #fff; /* Color de fondo blanco para el formulario */
+}
+
+.rounded {
+    border-radius: 0.5rem; /* Bordes redondeados para el formulario */
+}
+
+
+.invalid {
+    border: 1px solid red; /* Cambia el borde a rojo para resaltar el campo */
+}
+
+.error-message {
+    color: red;
+    font-size: 1em;
+    margin-top: 5px;
+    text-align: start;
+}
