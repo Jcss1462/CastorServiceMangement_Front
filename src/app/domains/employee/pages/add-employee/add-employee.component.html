@@ -43,7 +43,7 @@
                 <label for="foto" class="form-label">Foto</label>
                 <input id="foto" type="file" (change)="onFileChange($event)" class="form-control" accept="image/*">
                 @if(imagePreview){
-                    <div class="mt-3">
+                    <div class="mt-3 imageContainer">
                         <img [src]="imagePreview" alt="Vista previa de la imagen" class="img-fluid rounded">
                     </div>
                 }

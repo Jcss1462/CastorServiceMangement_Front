@@ -90,8 +90,6 @@ export class AddEmployeeComponent {
   async onSubmit(): Promise<void> {
     if (this.employeeForm.valid) {
 
-      const formData = new FormData();
-
       //obtengo la foto
       const fileInput = document.getElementById('foto') as HTMLInputElement;
       let fotoBase64 = '';

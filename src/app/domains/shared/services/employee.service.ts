@@ -36,5 +36,9 @@ export class EmployeeService {
     return response;
   }
 
+  updateEmployee(employee: Employee) {
+    return this.http.put<void>( environment.castorApi+"/Empleado/"+employee.id, employee);  
+  }
+
 
 }
